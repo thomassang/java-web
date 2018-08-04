@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server><!-- 代表服务器端的程序 -->
+	<service><!-- 提供服务 -->
+		<!-- 与服务器连接服务 -->
+		<connect port = "8080" maxSize = "100" protocol = "HTTP/1.1">  </connect>
+		
+		<!-- 设置服务器资源的根目录 -->
+		<webRoot>WebContent</webRoot>
+		
+		<!-- 配置统一的错误处理的404文件 -->
+		<not-found-page>404.html</not-found-page>
+	</service>	
+	
+	<!-- 响应不同的网页类型
+			ext是资源的后缀名
+			type是对应的Content-Type -->
+	<typemappings>
+	
+		<typemapping ext="html" type="text/html"></typemapping>
+		<typemapping ext="jpg" type="jmage/jpeg"></typemapping>
+		<typemapping ext="png" type="jmage/png"></typemapping>
+		<typemapping ext="js" type="application/javascript"></typemapping>
+		
+	</typemappings>
+</server>
