@@ -1,0 +1,94 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <title>表单标签</title>
+        <meta charset="UTF-8" />
+    </head>
+
+    <body>
+        <form action="#" method="get">
+            <table align="center" border="3" bordercolor="red" bgcolor="lightgray" cellspacing="0" width="600px" >
+                <tr>
+                    <td>用户名：</td>
+                    <td><input type="text" name="username"/></td>
+                </tr>
+                <tr>
+                    <td>密码：</td>
+                    <td><input type="password" name="pwd"/></td>
+                </tr>
+                <tr>
+                    <td>确认密码：</td>
+                    <td><input type="password" name="repwd"/></td>
+                </tr>
+                <tr>
+                    <td>昵称：</td>
+                    <td><input type="text" name="nick"/></td>
+                </tr>
+                <tr>
+                    <td>性别：</td>
+                    <td><input type="radio" name="sex" value="nan"/>男<input type="radio" name="sex" value="nv"/>女</td>
+                </tr>
+                <tr>
+                    <td>爱好：</td>
+                    <td><input type="checkbox" name="hobby" value="nan"/>男
+                        <input type="checkbox" name="hobby" value="16女"/>16岁的少女
+                        <input type="checkbox" name="hobby" value="26女"/>26岁的美女
+                        <input type="checkbox" name="hobby" value="32女"/>32岁的熟女
+                        <input type="checkbox" name="hobby" value="46女"/>46岁的妇女
+                    </td>
+                </tr>
+                <tr>
+                    <td>出生地：</td>
+                    <td>
+                        <select  name="city">
+                            <option>黑龙江</option>
+                            <option>吉林</option>
+                            <option>辽宁</option>
+                            <option>内蒙古</option>
+                            <option>河北</option>
+                            <option>海南</option>
+                            <option>天津</option>
+                        </select>
+                        <select  name="city21">
+                            <option>哈尔滨</option>
+                            <option>伊春</option>
+                            <option>大庆</option>
+                            <option>齐齐哈尔</option>
+                            <option>黑河</option>
+                            <option>佳木斯</option>
+                            <option>绥化</option>
+                        </select>
+                        <select  name="city32">
+                            <option>伊春区</option>
+                            <option>乌马河</option>
+                            <option>翠峦</option>
+                            <option>金山屯</option>
+                            <option>汤旺河</option>
+                            <option>嘉荫</option>
+                            <option>铁力</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>头像：</td>
+                    <td><input type="file" name="photo"/></td>
+                </tr>
+                <tr>
+                    <td>个人简介：</td>
+                    <td><textarea name="desc">aa</textarea></td>
+                </tr>
+                <tr>
+                    <td>验证码：</td>
+                    <td><input type="text" name="valldate"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="注册" />
+                        <input type="reset" value="重置" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+
+</html>
