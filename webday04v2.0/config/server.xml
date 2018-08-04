@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server><!-- 代表服务器端的程序 -->
+	<service><!-- 提供服务 -->
+		<!-- 与服务器连接服务 -->
+		<connect port = "8080" maxSize = "100" propocol = "HTTP/1.1">  </connect>
+		
+		<!-- 设置服务器资源的根目录 -->
+		<werRoot>WebContent</werRoot>
+	</service>	
+</server>
