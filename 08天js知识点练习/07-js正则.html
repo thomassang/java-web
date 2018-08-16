@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title>JavaScript基础</title>
+    <!--z在script标签内部直接书写js代码-->
+    <script type="text/javascript">
+      /*1.regexp 正则对象*/
+        var email = "abc123@163.com";
+
+        //声明正则表达式一
+        var reg1 = new RegExp("^\\w+@\\w+(\\.[a-z]+)+$");
+        console.log(reg1.test(email));
+
+        //声明正则对象表达式二
+        var reg2 = /^\w+@\w+(\.[a-z]+)+$/;
+        console.log(reg2.test(email));
+
+        //======================================
+        //2.String对象
+        var str1 = "Hello CGB1806........hello";
+        
+        var reg3 = /hello/ig;
+        var res = str1.match(reg3);
+        alert(res);
+
+
+    </script>
+
+</head>
+<body>
+   
+</body>
+</html>

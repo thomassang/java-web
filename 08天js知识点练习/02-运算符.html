@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title>JavaScript基础</title>
+    <!--z在script标签内部直接书写js代码-->
+    <script type="text/javascript">
+        /* 运算符 */
+        document.write((100 + 23) == 123);/*打印在网页*/
+        document.write("<br>");
+        document.write((100 + 23) === 123);/*打印在网页*/
+        document.write("<br>");
+
+        document.write("123" == 123);/*打印在网页*/
+        document.write("<br>");
+        document.write("123" === 123);/*打印在网页*/
+        document.write("<hr>");
+
+        console.log((100 + 23) == 123);/*打印在控制台上*/
+        
+        //2.typeof运算符，返回变量或者表达式的数据类型
+        var x = 123;
+        document.write( typeof x  + "<br/>");
+        x = "123";
+        document.write(typeof x + "<br/>");
+        x = true;
+        document.write(typeof x + "<br/>");
+
+        document.write("<hr>");
+
+        document.write(typeof 123 + "abc" + "<br/>");
+        document.write(typeof (123 + "abc") + "<br/>");
+    </script>
+
+</head>
+<body>
+   
+</body>
+</html>

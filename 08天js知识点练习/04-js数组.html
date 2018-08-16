@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title>JavaScript基础</title>
+    <!--z在script标签内部直接书写js代码-->
+    <script type="text/javascript">
+        /* 运算符 */
+        var arrl = new Array();//声明一个空数组
+        var arr2 = new Array(true, "abc", 123);
+        var arr3 = new Array(10);//长度是10
+        
+        console.log("arrl:" + arrl);
+        console.log("arr2:" + arr2);
+        console.log("arr3:" + arr3);
+
+        var arr4 = [];//声明一个空数组
+        var arr5 = ["hello", true, "abc", 123];//给订一个有初始值的数组
+        console.log("arr4:" + arr4);
+        console.log("arr5:" + arr5);
+
+        //js中的数组---常用属性和方法
+        var arr6 = ["hello", true, "abc", 123];
+        console.log("数组的长度length:" + arr6.length);
+
+        //pop/shift--删除数组:删除数组中最后一个或第一个的位置并返回该元素
+       // console.log( arr6.pop() );
+
+        //)push方法和unshift方法
+        console.log("push:" + arr6.push(false));
+
+        console.log("push:" + arr6.sort());
+        console.log("push:" + arr6.reverse());
+
+    </script>
+
+</head>
+<body>
+   
+</body>
+</html>
