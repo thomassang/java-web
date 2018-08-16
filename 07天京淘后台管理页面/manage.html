@@ -1,0 +1,26 @@
+﻿   <!doctype html>
+<html>
+    <head>
+        <title>后台管理系统</title>
+        <meta charset="utf-8" />
+        <style type="text/css">
+		</style>
+    </head>
+            <!--
+            framese标签：指定一个框架集
+            frame标签：定义框架集中的窗口
+               框架级便签要放在head和body中间，要不然不好使
+                noresize是固定
+            -->
+        <frameset rows="14%, 86%" frameborder="0" framespacing="0">
+            <frame src="_top.html" noresize="noresize"/>
+
+            <frameset cols="14%,86%"  frameborder="0" framespacing="0">
+                <frame src="_left.html"  noresize="noresize"/>
+                <frame src="_right.html" name="rightFrame" noresize="noresize"/>
+
+            </frameset>
+        </frameset>
+    <body>
+    </body>
+</html>
