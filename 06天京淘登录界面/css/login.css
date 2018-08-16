@@ -1,0 +1,96 @@
+* {/*样式重置（css Reset）*/
+    margin:0px;
+    padding:0px;
+}
+
+/* ***** common ***** */
+#header, #main, #footer {
+    width:1200px;
+    margin:0px auto;
+}
+
+/* ***** header ***** */
+#header {
+    height:72px;
+    margin:42px auto;
+}
+
+    #header img {   /*logo图片*/
+        margin:0 33px 0 50px;
+        vertical-align:middle;
+    }
+    #header .line { /*竖线*/
+        border:2px solid #cbcbcb;
+        height:68px;
+        display:inline-block;/*目的是能设置宽高*/
+        margin-right:22px;
+        vertical-align:middle;
+    }
+    #header .wel-login {        /*欢迎登录*/
+        font-size:36px;
+        color:#cbcbcb;
+        font-weight:bolder;
+        vertical-align:middle;
+    }
+
+/* ***** main ***** */
+#main {
+    border:7px solid #f0f0f0;
+    border-width:9px 7px;
+}
+    #main form {
+        width:385px;
+        display:inline-block;
+        vertical-align:top;
+        margin-left:110px;
+    }
+    #main h1 {
+        font-size:26px;
+        color:#333333;
+        font-weight:bold;
+        margin:87px 0px 20px;
+        text-align:center;
+    }
+    #main form .err-mag {
+        font-size:16px;
+        color:#f00;
+        text-align:center;
+        margin-bottom:9px;
+    }
+    #main form input {
+        width:381px;
+        height:49px;
+        font-size:16px;
+        color:#999;
+        text-indent:46px;
+        border:2px solid #ededed;
+        margin-bottom:32px;
+    }
+    #main form input[name='username'] {
+        background-image:url('../imgs/u_ico.jpg');
+        background-repeat:no-repeat;
+        background-position:14px 14px;
+    }
+    #main form input[name='password'] {
+        background-image:url('../imgs/p_ico.jpg');
+        background-repeat:no-repeat;
+        background-position:14px 14px;
+    }
+    #main form input[type='submit'] {
+        height:52px;
+        color:#fff;
+        background:#f00;
+        font-size:20px;
+        text-indent:0px;
+    }
+
+/* ***** footer ***** */
+#footer {
+    margin-top:144px;
+}
+    #footer p {
+        text-align:center;
+        font-size:14px;
+        color:#999;
+        line-height:34px;
+    }
