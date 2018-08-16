@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>二级联动下拉框</title>
+<!--
+data:
+	"北京市": ["海淀区","朝阳区","丰台区"]
+	"河北省": ["石家庄","唐山","秦皇岛"]
+	"辽宁省": ["沈阳","大连","鞍山"]
+	"山东省": ["青岛","济南","烟台"]
+-->
+<!--引入jquery的js库-->
+<script src="js/jquery-1.4.2.js"></script>
+<script>
+	var data = {
+		"北京市": ["海淀区","朝阳区","丰台区"],
+		"河北省": ["石家庄","唐山","秦皇岛"],
+		"辽宁省": ["沈阳","大连","鞍山"],
+		"山东省": ["青岛","济南","烟台"]
+	}
+
+	
+	
+	/* --通过jQuery实现二级联动下拉框
+	function selectCity(thisobj){
+		var prov = $(thisobj).val();//获取用户选中的省份
+		var citys = data[prov];//再根据省份获取对应的市区
+		$("#city").html("<option>--选择城市--</option>");//清空之前的数据
+		for(var i=0; i<citys.length; i++){
+			$("#city").append("<option>"+[citys[i]]+"</option>");
+		}
+	}-- */
+	
+	/* --通过js实现二级联动下拉框-- */
+	/* 练习1 */
+	function getCountry(){
+		//获取select元素
+		var oSelect = document.getElementsByName("country")[0];
+		alert(oSelect.value);
+	}
+	
+	/* 练习2 */
+	
+	function selectCity(thisobj){
+		//1.获取用户选中的省份
+		var prov = thisobj.value;
+
+		//2.根据省份获取该省份下所有的城市列表 北京市
+		var arrCity = data[prov];
+		//alert(arrCity);
+		
+		//3.将该省份下所有的城市 作为option选项填充到第二个select列表中
+		//>>获取第二个select
+		var oCity = document.getElementById("city");
+		
+		//>>先清空上个省份对应的城市列表
+		//方式一
+		//oCity.innerHTML = "<option>--选择城市--</option>";
+		
+		//方式二 JS中的数组的特点
+		var opts = oCity.getElementsByTagName("option");
+		//循环遍历, 挨个删除每一个option
+		var len = opts.length;
+		for(var i=0; i<len-1; i++){
+			oCity.removeChild(opts[1]);
+		}
+		
+
+		//海淀区 --> <option>海淀区</option>
+		for(var i = 0; i<arrCity.length; i++){
+			var oOpt = document.createElement("option");
+			oOpt.innerHTML = arrCity[i];
+			oCity.appendChild(oOpt);
+		}
+	}
+	
+</script>
+<!-- 
+	1.让用户先选择一个省份, 获取用户选中的省份 北京市
+
+	2.根据用户选中的省份, 获知省份下面的所有城市(数组)
+
+	3.将该省份下面的所有城市 作为option选项 填充到第二个select列表(城市)中
+ -->
+<!-- 
+js实现注意问题: 
+	ie10以下的浏览器不支持 select,table上的innerHTML属性
+	删除option时，由于删除后，options长度发生了变化，所以直接用for循环会有漏删的情况，可以由后向前删除，可以避免这样的问题
+-->
+</head>
+
+<body>
+	
+	<select name="country" onchange="getCountry()"  >
+		<option value="none">--选择国家--</option>
+		<option value="中国">中国</option>
+		<option value="美国">美国</option>
+		<option value="日本">日本</option>
+	</select>
+	<br><br>
+	<hr/>
+
+
+
+
+	
+	<br>
+	<div id="seleDiv">
+		
+		<select id="province" onchange="selectCity(this)">
+			<option>--选择省市--</option>
+			<option>北京市</option>
+			<option>河北省</option>
+			<option>辽宁省</option>
+			<option>山东省</option>
+		</select>
+		
+		<select id="city">
+			<option>--选择城市--</option>
+		</select>
+	</div>
+</body>
+
+</html>

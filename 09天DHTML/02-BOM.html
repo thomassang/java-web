@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<script>
+		/* 1.window对象 */
+		//window.alert("哈哈哈哈");
+
+		/*var res = window.confirm("您真的要删除该订单吗?");
+		if(res){
+			alert("订单删除成功!");
+		}else{
+			alert("操作已取消!");
+		}*/
+
+		//定义一个循环定时器
+		//清除循环定时器
+		/*var i = 0;
+		var timer = setInterval(function(){
+			console.log( new Date().getTime() );
+			i++;
+			if(i == 3){
+				clearInterval(timer);
+			}
+		}, 3000);*/
+
+		//定义一个一次性定时器
+		/*setTimeout(function(){
+			console.log("Hello...");
+		}, 2000);*/
+		
+		
+
+		/* 在浏览器加载完整个html文档之后立即执行! */
+		window.onload = function(){
+			//1.获取div元素
+			var div = document.getElementById("div1");
+			//2.通过div元素获取div中的所有内容
+			console.log( div.innerHTML );
+		}
+		
+	</script>
+</head>
+<body>
+	<div id="div1">获取div中的所有内容...</div>
+
+	<script>
+		
+	</script>
+</body>
+</html>

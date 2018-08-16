@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //1.window对象
+        alert("哈哈哈哈哈哈啊哈哈哈");
+
+        var res = window.confirm("hahahahah");
+        if (res) {
+            alert("订单删除成功！");
+        } else {
+            alert("操作已取消");
+        }
+        //定义一个循环定时器
+        //清除循环定时器
+
+        var i = 0;
+        var timer = setInterval(function () {
+            console.log(new Date().getTime());
+            i++;
+            if(i == 6){
+                clearInterval(timer);
+            }
+        }, 3000);
+        
+        //定义一个一次性定时器
+        setTimeout(function () {
+            console.log("hello");
+        }, 2000);
+
+        //1、获取djv元素
+        var div = document.getElementById("div1");
+        //2、通过div 元素获取dav中的所有内容都
+        console.log(div.innerHTML);
+        
+        window.onload = function () {
+            //1、获取djv元素
+            var div = document.getElementById("div1");
+            //2、通过div 元素获取dav中的所有内容都
+            console.log(div.innerHTML);
+        }
+    </script>
+</head>
+<body>
+    <div id="div1">获取div中所有内容</div>
+    <script></script>
+</body>
+</html>
