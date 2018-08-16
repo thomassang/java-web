@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery</title>
+	
+	<script src="../js/jquery-1.4.2.js"></script>
+	<script>
+	/* 光标点进输入框时，触发执行*/
+		function focusfn(thisobj){
+			if(thisobj.value == "请输入用户名"){
+				thisobj.value = "";
+			}
+		}
+	/* 光标离开输入框时，触发执行*/
+		function blurfn(thisobj){
+			if(thisobj.value == ""){
+				thisobj.value = "请输入用户名";
+			}
+		}
+		
+	</script>
+</head>
+<body>
+	用户名：<input type="text" id="username" value="请输入用户名" onfocus="focusfn(this)" onblur="blurfn(this)" />
+	
+</body>
+</html>

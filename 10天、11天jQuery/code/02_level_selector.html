@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>层级选择器</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+	div,span {
+		font-size: 14px;
+		width: 140px;
+		height: 140px;
+		margin: 20px;
+		background: #9999CC;
+		border: #000 1px solid;
+		float: left;
+		font-size: 17px;
+		font-family: Roman;
+	}
+	.mini,div.mini01{
+	    width: 80px;
+	    height: 70px;
+		background: #CC66FF;
+		border: #000 1px solid;
+		font-family: Roman;
+	}
+	div.mini01{
+	    height: 65px;
+	    width: 65px;
+	    background-color:pink;
+	}
+	input{ margin: 5px 5px; }
+</style>
+
+<!--引入jquery的js库-->
+<script src="../js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+	$(function() {
+		/* ---------层级选择器练习--------- */
+		//1、改变 div 内所有 span 的背景色为 #FF0000" id="b1"
+		/* 选中b1按钮,为b1按钮绑定点击事件 */
+		$("#b1").click(function(){
+			$("div span").css("background", "#FF0000");
+		});
+		
+		//2、改变 body 内子 div 的背景色为 #D8C93B"  id="b2"
+		/* 选中b2按钮,为b2按钮绑定点击事件 */
+		$("#b2").click(function(){
+			$("body>div").css("background", "#D8C93B");
+		});
+		
+		//3、改变 id 为 two 的下一个 div 的背景色为 #0000FF"  id="b3"
+		/* 选中b3按钮,为b3按钮绑定点击事件 */
+		$("#b3").click(function(){
+			$("#two+div").css("background", "#0000FF");
+		});
+
+		//4、改变 id 为 two 的元素后面的所有 div 兄弟元素的背景色为 #76AA0F"  id="b4"
+		/* 选中b4按钮,为b4按钮绑定点击事件 */
+		$("#b4").click(function(){
+			$("#two~div").css("background", "#76AA0F");
+		});
+		
+		//5、改变 id 为 two 的元素所有 div 兄弟元素的背景色为 #FF6347"  id="b5"
+		$("#b5").click(function(){
+			//$("#two").next("div").css("background", "yellow");
+			//$("#two").nextAll("div").css("background", "yellow");
+			$("#two").siblings("div").css("background", "yellow");
+		});
+	})
+</script>
+</head>
+
+<body>
+	<input type="button" value=" 改变 div 内所有 span 的背景色为 #FF0000" id="b1" />
+	<input type="button" value=" 改变 body 内子 div 的背景色为 #D8C93B" id="b2" />
+	<input type="button" value=" 改变 id 为 two 的下一个 div 的背景色为 #0000FF" id="b3" />
+	<input type="button" value=" 改变 id 为 two 的元素后面的所有 div 兄弟元素的背景色为 #76AA0F" id="b4" />
+	<input type="button" value=" 改变 id 为 two 的元素所有  div 兄弟元素的背景色为 #FF6347" id="b5" />
+
+	<h1>点击按钮查看效果...</h1>
+
+	<div id="one">div：id为one</div>
+	<div class="one">
+		div
+		<span class="mini"> span</span>
+		<div class="mini"> div</div>
+	</div>
+	<div id="two">
+		div：id为two
+		<div class="mini"> div</div>
+	</div>
+	<div>
+		div：
+		<div class="mini01"> div</div>
+		<span class="mini"> span</span>
+	</div>
+	<div class="one"> div</div>	<br>
+	<span class="one"> span</span>	<br>
+</body>
+</html>
+
+
+

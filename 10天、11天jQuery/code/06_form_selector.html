@@ -1,0 +1,96 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>表单选择器</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+div,span { width: 140px; height: 140px; margin: 20px; background: #9999CC; border: #000 1px solid; float: left; font-size: 17px; font-family: Roman;
+}
+div.mini { font-size: 14px; height: 53px; width: 47px; background: #CC66FF; border: #000 1px solid; font-family: Roman; }
+input{ margin: 5px 5px; }
+</style>
+
+<!--引入jquery的js库-->
+<script src="../js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+	$(function() {
+		/* ---------表单选择器练习--------- */
+		//1、打印所有的 :input 元素 id="b1"
+		/* :input元素可以选中所有的表单项元素(input、select、textarea) */
+		$("#b1").click(function(){
+			$(":input").each(function(){
+				console.log( this );
+			});
+		});
+		
+		//2、打印所有的 :password 元素" id="b2"
+		/* :password 匹配所有的密码输入框 */
+		$("#b2").click(function(){
+			$(":password").each(function(){
+				console.log(this);
+			});
+		});
+
+		//3、打印所有的 :radio 元素" id="b3"
+		/* :radio 匹配所有的单选框 */
+		$("#b3").click(function(){
+			$(":radio").each(function(){
+				console.log(this);
+			});
+		});
+		
+		//4、打印所有的 :checked 元素" id="b4"
+		/* :checked 匹配所有被选中的单选框、复选框、option选项
+		 * :selected 匹配所有被选中option选项
+		 */
+		$("#b4").click(function(){
+			$(":checked").each(function(){
+				console.log( this );
+			});
+            //2）
+			/*$("input:checked").each(function(){
+				console.log( this );
+			});*/
+            //3）匹配所有被选中的单选框
+			/*$("input[type='radio']:checked").each(function(){
+				console.log( this );
+			});*/
+            //4）匹配多有选中都复选框
+			/*$("input[type='checkbox']:checked").each(function(){
+				console.log( this );
+			});*/
+		});
+	})
+</script>
+</head>
+
+<body>
+	<input type="button" value=" 打印所有的 :input 元素" id="b1" />
+	<input type="button" value=" 打印所有的 :password 元素" id="b2" />
+	<input type="button" value=" 打印所有的 :radio 元素" id="b3" />
+	<input type="button" value=" 打印所有的 :checked 元素" id="b4" />
+
+	<h1>打开浏览器的控制台查看...</h1>
+	
+	用户名：<input type="text" disabled="disabled" name="username" value="被禁用了"/>
+	密码：<input type="password" name="password" value="123"/>
+	性别：<input type="radio" name="gender" value="man"/> 男
+		<input type="radio" name="gender" value="woman" checked="checked" />女
+	<br><br>
+	爱好：
+		<input type="checkbox" name="like" value="lanqiu"  checked="checked" /> 篮球
+		<input type="checkbox" name="like" value="taiqiu"/> 台球
+		<input type="checkbox" name="like" value="zuqiu"/> 足球
+	出生地：
+		<select name="city">
+			<option value="beijing">北京</option>
+			<option value="shanghai" selected="selected">上海</option>
+			<option value="guangzhou">广州</option>
+		</select>
+	简介：
+		<textarea name="discription" rows="2" cols="10">请求输入个人描述...</textarea>
+</body>
+</html>
+
+
+

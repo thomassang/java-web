@@ -1,0 +1,102 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>创建表格</title>
+<!-- 定义一些样式,将来给表格用 -->
+<style type="text/css">
+table{
+	border:#0099FF 1px solid;
+	width:600px;
+	border-collapse:collapse;
+}
+	
+table td{
+	border:#0099FF 1px solid;
+	padding:10px 20px 3px 1px; 
+}
+</style>
+<!-- 引入jQuery的函数库文件 -->
+<script src="../js/jquery-1.4.2.js"></script>
+<script type="text/javascript">
+	//创建单行单列的表格 table tr td
+	function createTable(){
+		/* $("#tab").append(
+			$("<table><tr><td>哈哈哈</td></tr></table>")
+		); */
+		
+		//1.创建一个table元素
+		var $table = $("<table></table>");
+		//2.创建一个tr元素
+		var $tr = $("<tr></tr>");
+		//3.创建一个td元素
+		var $td = $("<td></td>");
+		//4.将td元素添加到tr中
+		$tr.append( $td );
+		$td.html("哈哈~~");
+		//5.将tr元素添加到table中
+		$table.append( $tr );
+		//6.将table元素添加到div中
+		$("#tab").append( $table );
+	}
+
+	//创建5行6列的表格
+	function createTable2(){
+		//1.创建一个table元素
+		var $table = $("<table></table>");
+		for(var j=0;j<5;j++){
+			//2.创建一个tr元素
+			var $tr = $("<tr></tr>");
+			for(var i=0;i<6;i++){
+				//3.创建一个td元素
+				var $td = $("<td></td>");
+				$td.html("哈哈~~");
+				//4.将td元素添加到tr中
+				$tr.append( $td );
+			}
+			//5.将tr元素添加到table中
+			$table.append( $tr );
+		}
+		//6.将table元素添加到div中
+		$("#tab").append( $table );
+	}
+
+	//创建指定行和列的表格
+	function createTable3(){
+		//获取用户所输入的行数
+		var rows = $("#row").val();
+		//获取用户所输入的列数
+		var cols = $("#col").val();
+		//1.创建一个table元素
+		var $table = $("<table></table>");
+		for(var j=0;j<rows;j++){
+			//2.创建一个tr元素
+			var $tr = $("<tr></tr>");
+			for(var i=0;i<cols;i++){
+				//3.创建一个td元素
+				var $td = $("<td></td>");
+				$td.html("哈哈~~");
+				//4.将td元素添加到tr中
+				$tr.append( $td );
+			}
+			//5.将tr元素添加到table中
+			$table.append( $tr );
+		}
+		//6.将table元素添加到div中
+		$("#tab").append( $table );
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="创建表格" onclick="createTable()" /><br />
+
+	<input type="button" value="创建表格(5行6列)" onclick="createTable2()" /><br />
+
+	行数:<input type="text" name="row" id="row"/><br />
+	列数:<input type="text" name="col" id="col"/><br />
+	<input type="button" name="createButton" value="创建表格(行列用户输入)" onclick="createTable3()" />
+	<div id="tab">
+			
+	</div>
+</body>
+</html>

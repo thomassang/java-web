@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>jQuery</title>
+	<!-- 引入jQuery库文件 -->
+	<script src="js/jquery-1.4.2.js"></script>
+	<script>
+		//文档就绪事件函数(JS方式)
+		/*window.onload = function(){
+			//获取div元素
+			var div = document.getElementById("hello");
+			//获取div的内容
+			alert( div.innerHTML );
+		}*/
+		/*$(function(){
+			//获取div元素
+			var div = document.getElementById("hello");
+			//获取div的内容
+			//alert( div.innerHTML );
+			alert( $(div).html() );
+		});*/
+
+		$(function(){
+			//$("#hello").html();
+			alert( $("#hello")[0].innerHTML ) ;
+		});
+		
+	</script>
+</head>
+<body>
+	<div id="hello">Hello jQuery!</div>
+</body>
+</html>
