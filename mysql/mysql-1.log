@@ -1,0 +1,123 @@
+-- 删除db1库。
+drop database if exists db1;
+-- 重新创建db1库
+create database db1;
+-- 展示库
+show databases;
+use db1;
+--删除stu学生表
+drop table if exists stu;
+--创建stu学生表
+create table stu(
+id int ,
+name varchar(20), 
+gender char(1),
+birthday date 
+);
+--展示表
+desc stu;
+--中文
+--先告诉服务器，客户端是什么编码
+--连接断开之前，服务器可以记住这个编码
+set names gbk;
+
+-- 插入数据
+insert into stu values(6,'王海涛','男','1996-8-4');
+--查询stu表的数据
+select * from stu;
+--插入id name
+insert into stu(id,name)
+ values(1,'李四'),(2,'张三'),
+ (3,'王五'),(4,'赵六'),(5,'钱七');
+--吧1号李四进行修改
+update stu set gender='女',birthday='1998-4-6' where id=1;
+
+--删除id>8的数据
+delete from stu where id>8;
+--查询指定字段
+select id from stu;
+select birthday from stu;
+select name from stu;
+select gender from stu;
+select id,birthday from stu;
+--测试数据
+--hr_mysql.sql 放在e盘根目录
+--sql脚本文件
+--建库、建表、插入数据的sql的代码
+--执行这个文间中的sql代码
+source e:\hr_mysql.sql
+--查询表
+show tables;
+--员工表表结构
+desc emps;
+--员工表数据
+select * from emps;
+
+select id,fname,sal,dept_id from emps;
+
+--员工id是122
+select id,fname,sal,dept_id from emps where id=122;
+--部门编号dept_id是30
+select id,fname,sal,dept_id from emps where dept_id=30;
+--工作岗位代码job_id时“IT_PROG"
+select id,fname,sal,dept_id from emps where job_id='IT_PROG';
+
+--工资范围[5000,8000]
+select id,fname ,sal,dept_id from emps where sal>5000;
+
+select id,fname ,sal,dept_id from emps where sal>=5000 and sal<=8000;
+
+select id,fname ,sal,dept_id from emps where sal between 5000 and 8000;
+--id 是120,122,100,150
+select id,fname ,sal,dept_id from emps where id in(120,122,100,150);
+select id,fname ,sal,dept_id from emps where id=120 or id=122;
+
+--没有部门的员工，dept_id是null
+select id,fname ,sal,dept_id from emps where dept_id is null;
+-- 有提成的员工     
+select id,fname ,sal,dept_id from emps where com_pct is null;
+-- fname 中包含en
+select id,fname ,sal,dept_id from emps where fname like '_en%';
+-- 查询所有部门id
+select distinct dept_id from emps where dept_id is not null;
+-- 查询50部门的员工，按工资降序
+select id,fname ,sal,dept_id from emps where dept_id=50 order by sal desc;
+-- 所有员工，按部门升序，相同部门按工资降序
+select id,fname,sal,dept_id
+from emps
+order by dept_id, sal desc;
+
+use db1;
+insert into stu(id,name) values(6433,'I''m XXX');
+select * from stu;
+       
+-- fname和lname首字母相同
+select id,fname,lname,sal,dept_id from emps where left(fname,1)=left(lname,1) ;
+select id,fname,lname,sal,dept_id from emps where substring(fname,1,1)=substring(lname,1,1) ;
+-- fname和lname连接起来，在对其中间的空格
+select concat(lpad(fname,15,' '),'    ',lname) from emps;
+--工资上涨11.31% 向上取整到10位
+select id,fname,sal,sal*1.1131 from emps;
+
+-- 所有员工随机排序
+select id,fname,sal,dept_id from emps order by rand();
+-- 查询系统当前时间
+select now();
+--查询1997年所有入职的员工
+select id,fname,hdate from emps where hdate between '1997-1-1' and '1997-12-31';
+select id,fname,hdate from emps where extract(year from hdate)='1997';
+
+-- 员工入职多少年
+select id,fname,hdate, datediff(now(),hdate)/365 y from emps order by y;
+-- 年薪*提成
+select id,fname,sal,sal*12*(1+ifnull(com_pct,0)) t from emps order by t desc;
+--最低工资制
+select min(sal) from emps;
+select sum(sal),avg(sal),max(sal),min(sal),count(sal) from emps;
+
+-- 每个部门的平均工资
+select  dept_id, avg(sal) from emps group by dept_id;
+-- 每个工作岗位job_id的人数
+select count(*) from emps group by job_id;
+
+-- 

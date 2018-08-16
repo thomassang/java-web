@@ -1,0 +1,126 @@
+select id;fname,tel,replace(tel,'44','88') from emps,where tel like '%44%';
+select count(*) from emps where mgr_id in(100,120,122);
+--按主管id分组，求每个主管的手下人数
+select mgr_id, count(*) from emps where mgr_id is not null group by mgr_id;
+--having 用来对行函数结果进行过滤
+select mgr_id, count(*) c from emps where mgr_id is not null group by mgr_id having c=1;
+--平均工资小于等于5000的岗位代码
+select job_id,avg(sal) a from emps group by job_id having a<=5000;
+--平均工资小于平均值
+select avg(sal)
+
+select id,fname,sal from emps 
+--只有一个人的部门，查询这些员工
+--1.分组，按部门分组求人数过滤只有一个人的部门
+--2.用部门id来过滤查询员工
+select dept_id from emps where dept_id is not null group by dept_id having count(*)=1;
+select id,fname,sal,dept_id from emps where dept_id in();
+
+select id,fname,sal,dept_id from emps where dept_id in(
+select dept_id from emps where dept_id is not null group by dept_id having count(*)=1);
+
+--平均工资最低的工作岗位代码
+--1.按job_id分组求平均工资
+--2.平均工资的最小值
+--3.最小的平均工资值过滤工作岗位代码
+select job_id,avg(sal) a from emps group by job_id;
+select job_id, min(a) from(上面) t group by job_id;
+
+select job_id,avg(sal) a from emps group by job_id having a=(
+select min(a) from(
+select job_id,avg(sal) a from emps group by job_id) t);
+
+--手下人数最多的主管id
+--1.按mgr_id分组求人数
+--2.求人数的最大值
+--3.根据最大值求主管id
+select mgr_id, count(*) c from emps where mgr_id is not null group by mgr_id;
+
+select max(c) from (
+select mgr_id, count(*) c from emps where mgr_id is not null group by mgr_id
+) t;
+
+select mgr_id,count(*) c from emps where mgr_id is not null group by mgr_id having c=(
+	select max(c) from (
+		select mgr_id, count(*) c from emps where mgr_id is not null group by mgr_id
+	) t
+)
+order by c;
+
+--换一个数据库操作
+--如果有没有db1库，新建
+create database db1 charset utf-8;
+use db1;
+--设置学生id为主键
+create table xuesheng(id int primary key,stu_num int, name varchar(20));
+--告诉服务器，客户端使用的什么字符编码
+set names gbk;
+--插入两条记录
+insert into xuesheng(id,name) values(1,'张三'),(2,'李四');
+--设置自增主键
+alter table xuesheng modify id int auto_increment;
+--插入数据
+insert into xuesheng(name) values('李四'),('王五'),('钱六');
+--查询
+select * from xuesheng;
+--获得刚刚产生的自增值
+
+--使用hr表
+use hr;
+--查询员工，显示员工的部门名
+--先连接两张表
+select e.id, e.fname, e.sal, d.dept_id, d.dept_name
+from emps e,depts d
+where e.dept_id=d.dept_id;
+
+--地区表
+select * from locations;
+
+--查询部门，显示部门的的城市
+select d.dept_id,d.dept_name, l.city
+from depts d, locations l
+where d.loc_id=l.loc_id;
+
+--查询部门，显示部门经理名
+select d.dept_id, d.dept_name, s.fname
+from depts d,emps s
+where d.mgr_id=s.id; 
+--查询员工，显示员工主观名
+--自连接，一张表，看作是两张表来连接
+select e1.id, e1.fname, e1.sal, e2.fname mgr
+from emps e1,emps e2
+where e1.mgr_id=e2.id;
+--所有部门，显示部门经理名，没有经理显示null
+select d.dept_id, d.dept_name,e.fname
+from depts d
+	left join emps e 
+	on(d.mgr_id=e.id);
+--查询107个员工，显示部门名和城市
+select e.id, e.fname, e.sal, d.dept_name, l.city
+from emps e
+	left join depts d
+	on(e.dept_id=d.dept_id)
+	left join locations l
+	on(d.loc_id=l.loc_id);
+--启动事务
+begin;
+--回话一：
+insert into banji(name) values('C');
+update banji set name='Z' where id=1;
+select * from banji;
+commit;
+
+update banji set name='Y' where id=1;
+rollback;
+
+
+--回话二：
+begin;
+select * from banji;
+
+update banji set name='X' where id=1;
+
+
+
+
+
